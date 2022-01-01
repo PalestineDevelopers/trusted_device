@@ -2,7 +2,7 @@
 
 ## Part of [PalestineDevelopers](https://github.com/PalestineDevelopers)
 
-Native Device security checks, Rooted/Jailbroken, Not real device, Developer mode is on, On external drive.
+Device security checker, isRooted/isJailbroken, isRealDevice, devModeActive or onExternalStorage.
 
 [![License](https://img.shields.io/github/license/PalestineDevelopers/trusted_device)](https://github.com/PalestineDevelopers)
 [![Pub](https://img.shields.io/badge/Palestine%20Trusted%20Device-pub-blue)](https://pub.dev/packages/palestine_trusted_device)
