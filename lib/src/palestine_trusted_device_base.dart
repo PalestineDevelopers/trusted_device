@@ -1,23 +1,29 @@
 import 'dart:async';
 import 'dart:developer' as developer;
-import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class PalTrustedDevice {
-  factory PalTrustedDevice() => _singleton;
-  PalTrustedDevice._internal() {
-    developer.log('--PalTrustedDevice-- (Instance Created --> Singleton)');
-  }
-  static final PalTrustedDevice _singleton = PalTrustedDevice._internal();
+  /// * CHANNEL THAT RETURN CHECK RESULTS
+  /// ! DO NOT CHANGE THE KEY UNDER ANY CIRCUMSTANCES AT ALL
+  /// ! CHANGE THE VALUE WILL CAUSE CHECK ERRORS
+  MethodChannel channel = const MethodChannel('palestine_trusted_device');
 
-  /// channel name
-  static const MethodChannel _channel =
-      MethodChannel('palestine_trusted_device');
+  /// * LIST OF SUPPORTED PLATFORMS
+  static const List<TargetPlatform> supportedPaltforms = [
+    TargetPlatform.android,
+    TargetPlatform.iOS,
+  ];
+
+  /// * IS DEVICE ANDROID
+  static bool isAndroid = TargetPlatform.android == defaultTargetPlatform;
+
+  /// * IS DEVICE SAFE
+  static bool isDeviceSafe = true;
 
   ///---
-  ///check device security
+  /// check device is safe and secure
   ///---
   /// checkRooted | checkRealDevice | checkOnExternalStorage | checkDevMode
   static Future<bool> check({
@@ -27,61 +33,37 @@ class PalTrustedDevice {
     bool checkDevMode = true,
     required VoidCallback onFail,
   }) async {
-    if (!Platform.isAndroid && !Platform.isIOS) {
-      return Future<bool>.value(true);
+    // * If not supported .. fallback
+    if (!supportedPaltforms.contains(defaultTargetPlatform)) {
+      developer.log(
+        '--PalestineTrustedDevice-- DEVICE NOT SUPPORTED',
+        name: 'SECURITY',
+      );
+      return isDeviceSafe;
     }
 
-    bool trust = true;
+    final MethodChannel _channel = PalTrustedDevice().channel;
 
-    // Android | IOS
-    if (checkRealDevice) {
-      final bool isRealDevice =
-          await _channel.invokeMethod('isRealDevice') as bool;
+    final List<bool> checks = [
+      checkRealDevice &&
+          (await _channel.invokeMethod('isReal') ?? true) == false,
+      checkRooted && (await _channel.invokeMethod('isRooted') ?? false),
+      // ! ANDROID ONLY
+      checkDevMode && (await _channel.invokeMethod('isDev') ?? false),
+      // ! ANDROID ONLY
+      checkOnExternalStorage && (await _channel.invokeMethod('onExt') ?? false),
+    ];
 
-      if (!isRealDevice) {
-        developer.log(
-            '--PalestineTrustedDevice-- (Security) - FAIL - (!isRealDevice)');
-        trust = false;
-      }
+    isDeviceSafe = !checks.contains(true);
+
+    if (!isDeviceSafe) {
+      developer.log(
+        '--PalestineTrustedDevice-- (SECURITY) - DEVICE NOT SAFE',
+        name: 'SECURITY',
+      );
+      onFail();
     }
 
-    // Android
-    if (checkDevMode && Platform.isAndroid) {
-      final bool isDevModeActive =
-          await _channel.invokeMethod('isDevModeActive') as bool;
-
-      if (isDevModeActive) {
-        developer.log(
-            '--PalestineTrustedDevice-- (Security) - FAIL - (isDevModeActive)');
-        trust = false;
-      }
-    }
-
-    // Android
-    if (checkOnExternalStorage && Platform.isAndroid) {
-      final bool isOnExternalStorage =
-          await _channel.invokeMethod('isOnExternalStorage') as bool;
-
-      if (isOnExternalStorage) {
-        developer.log(
-            '--PalestineTrustedDevice-- (Security) - FAIL - (isOnExternalStorage)');
-        trust = false;
-      }
-    }
-
-    // Android | IOS
-    if (checkRooted) {
-      final bool isRooted = await _channel.invokeMethod('isRooted') as bool;
-
-      if (isRooted) {
-        developer
-            .log('--PalestineTrustedDevice-- (Security) - FAIL - (Rooted)');
-        trust = false;
-      }
-    }
-
-    onFail();
-
-    return trust;
+    return isDeviceSafe;
   }
 }

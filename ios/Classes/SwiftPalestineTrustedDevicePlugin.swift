@@ -23,7 +23,7 @@ public class SwiftPalestineTrustedDevicePlugin: NSObject, FlutterPlugin {
         case "getPlatformVersion":
             result("iOS " + UIDevice.current.systemVersion)
             break
-        case "isRealDevice":
+        case "isReal":
             result(TARGET_OS_SIMULATOR == 0)
             break
         case "isRooted":

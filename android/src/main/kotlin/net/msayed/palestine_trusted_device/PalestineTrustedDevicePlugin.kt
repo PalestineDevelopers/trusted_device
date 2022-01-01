@@ -93,7 +93,7 @@ class PalestineTrustedDevicePlugin: FlutterPlugin, MethodCallHandler {
     }
   }
 
-  private fun isOnExternalStorage(): Boolean {
+  private fun onExt(): Boolean {
     val pm = context.packageManager
     try {
       val pi = pm.getPackageInfo(context.packageName, 0)
@@ -160,14 +160,14 @@ class PalestineTrustedDevicePlugin: FlutterPlugin, MethodCallHandler {
         call.method.equals("getPlatformVersion") -> {
           result.success("Android ${android.os.Build.VERSION.RELEASE}")
         }
-        call.method.equals("isRealDevice") -> {
+        call.method.equals("isReal") -> {
           result.success(!isEmulator())
         }
-        call.method.equals("isDevModeActive") -> {
+        call.method.equals("isDev") -> {
           result.success(isDevMode())
         }
-        call.method.equals("isOnExternalStorage") -> {
-          result.success(isOnExternalStorage())
+        call.method.equals("onExt") -> {
+          result.success(onExt())
         }
         call.method.equals("isRooted") -> {
           result.success(isRooted())
