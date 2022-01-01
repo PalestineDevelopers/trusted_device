@@ -2,6 +2,16 @@
 
 * Improvements
 
+## 0.0.8
+
+* refactoring.
+* docs.
+
+## 0.0.7
+
+* Test cases in progress.
+* Try catch blocks.
+
 ## 0.0.6
 
 * Shorten class names.

@@ -1,20 +1,36 @@
 # palestine_trusted_device
 
-Native Device security checks, Rooted/Jailbroken, Not real device, Developer mode is on, On external drive.
+## Part of [PalestineDevelopers](https://github.com/PalestineDevelopers)
 
-[![License](https://img.shields.io/github/license/msayed-net/PalestineDevelopers)](https://github.com/msayed-net/PalestineDevelopers)
+Device security checker, isRooted|isJailbroken, isRealDevice, devModeActive or onExternalStorage.
+
+[![License](https://img.shields.io/github/license/PalestineDevelopers/trusted_device)](https://github.com/PalestineDevelopers)
 [![Pub](https://img.shields.io/badge/Palestine%20Trusted%20Device-pub-blue)](https://pub.dev/packages/palestine_trusted_device)
 [![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/palestine_trusted_device/example)
 
-Part of PalestineDevelopers project
+[![Fork](https://img.shields.io/github/forks/PalestineDevelopers/trusted_device?style=social)](https://github.com/PalestineDevelopers/trusted_device)
+[![Star](https://img.shields.io/github/stars/PalestineDevelopers/trusted_device?style=social)](https://github.com/PalestineDevelopers/trusted_device)
+[![Watch](https://img.shields.io/github/watchers/PalestineDevelopers/trusted_device?style=social)](https://github.com/PalestineDevelopers/trusted_device)
 
-[![Fork](https://img.shields.io/github/forks/msayed-net/PalestineDevelopers?style=social)](https://github.com/msayed-net/PalestineDevelopers)
-[![Star](https://img.shields.io/github/stars/msayed-net/PalestineDevelopers?style=social)](https://github.com/msayed-net/PalestineDevelopers)
-[![Watch](https://img.shields.io/github/watchers/msayed-net/PalestineDevelopers?style=social)](https://github.com/msayed-net/PalestineDevelopers)  
+---
+
+## Table Of Contents
+
+* [Features](#features)
+* [Getting started](#getting-started)
+* [Usage](#usage)
+
+---
 
 ## Features
 
-* Android/IOS security checks
+* Android|IOS security checks:
+  * isRooted|isJailbroken
+  * isRealDevice
+  * isInDevMode
+  * isOnExternalStorage
+
+---
 
 ## Getting started
 
@@ -24,7 +40,18 @@ To start, import package
 import 'package:palestine_trusted_device/palestine_trusted_device.dart';
 ```
 
+---
+
 ## Usage
+
+Ensure flutter framework is active
+
+* Add this to the beginning of `main()`
+
+```dart
+// Make Sure Framework Is Ready
+WidgetsFlutterBinding.ensureInitialized();
+```
 
 Just as easy as this
 
