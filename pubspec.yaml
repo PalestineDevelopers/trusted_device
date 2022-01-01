@@ -2,10 +2,11 @@ name: palestine_trusted_device
 description: Check if the device is trustworthy, rooted, jailbroken, developer mode is on, ...etc.
 version: 0.0.8
 homepage: https://github.com/msayed-net/PalestineDevelopers
+issue_tracker: https://github.com/PalestineDevelopers/trusted_device/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=2.17.0"
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
