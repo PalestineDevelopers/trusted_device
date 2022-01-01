@@ -11,7 +11,7 @@ class PalTrustedDevice {
   MethodChannel channel = const MethodChannel('palestine_trusted_device');
 
   /// * LIST OF SUPPORTED PLATFORMS
-  static const List<TargetPlatform> supportedPaltforms = [
+  static const List<TargetPlatform> supportedPlatforms = [
     TargetPlatform.android,
     TargetPlatform.iOS,
   ];
@@ -34,7 +34,7 @@ class PalTrustedDevice {
     required VoidCallback onFail,
   }) async {
     // * If not supported .. fallback
-    if (!supportedPaltforms.contains(defaultTargetPlatform)) {
+    if (!supportedPlatforms.contains(defaultTargetPlatform)) {
       developer.log(
         '--PalestineTrustedDevice-- DEVICE NOT SUPPORTED',
         name: 'SECURITY',
