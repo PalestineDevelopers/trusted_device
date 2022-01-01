@@ -15,7 +15,7 @@ void main() {
       } else if (methodCall.method == 'isDev') {
         return false;
       } else if (methodCall.method == 'onExt') {
-        return false;
+        return true;
       } else {
         return false;
       }
