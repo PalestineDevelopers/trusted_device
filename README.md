@@ -2,7 +2,7 @@
 
 ## Part of [PalestineDevelopers](https://github.com/PalestineDevelopers)
 
-Device security checker, isRooted/isJailbroken, isRealDevice, devModeActive or onExternalStorage.
+Device security checker, isRooted|isJailbroken, isRealDevice, devModeActive or onExternalStorage.
 
 [![License](https://img.shields.io/github/license/PalestineDevelopers/trusted_device)](https://github.com/PalestineDevelopers)
 [![Pub](https://img.shields.io/badge/Palestine%20Trusted%20Device-pub-blue)](https://pub.dev/packages/palestine_trusted_device)
@@ -24,8 +24,8 @@ Device security checker, isRooted/isJailbroken, isRealDevice, devModeActive or o
 
 ## Features
 
-* Android/IOS security checks:
-  * isRooted/isJailbroken
+* Android|IOS security checks:
+  * isRooted|isJailbroken
   * isRealDevice
   * isInDevMode
   * isOnExternalStorage
