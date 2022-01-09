@@ -4,13 +4,13 @@
 
 Device security checker, isRooted|isJailbroken, isRealDevice, devModeActive or onExternalStorage.
 
-[![License](https://img.shields.io/github/license/PalestineDevelopers/trusted_device)](https://github.com/PalestineDevelopers)
-[![Pub](https://img.shields.io/badge/Palestine%20Trusted%20Device-pub-blue)](https://pub.dev/packages/palestine_trusted_device)
-[![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/palestine_trusted_device/example)
+[![License](https://img.shields.io/github/license/PalestineDevelopers/trusted_device?style=for-the-badge)](https://github.com/PalestineDevelopers)
+[![Pub](https://img.shields.io/badge/Palestine%20Trusted%20Device-pub-blue?style=for-the-badge)](https://pub.dev/packages/palestine_trusted_device)
+[![Example](https://img.shields.io/badge/Example-Ex-success?style=for-the-badge)](https://pub.dev/packages/palestine_trusted_device/example)
 
-[![Fork](https://img.shields.io/github/forks/PalestineDevelopers/trusted_device?style=social)](https://github.com/PalestineDevelopers/trusted_device)
-[![Star](https://img.shields.io/github/stars/PalestineDevelopers/trusted_device?style=social)](https://github.com/PalestineDevelopers/trusted_device)
-[![Watch](https://img.shields.io/github/watchers/PalestineDevelopers/trusted_device?style=social)](https://github.com/PalestineDevelopers/trusted_device)
+[![GitHub release](https://img.shields.io/github/v/release/PalestineDevelopers/trusted_device?style=for-the-badge)](https://github.com/PalestineDevelopers/trusted_device/releases)
+[![GitHub stars](https://img.shields.io/github/stars/PalestineDevelopers/trusted_device?style=for-the-badge)](https://github.com/PalestineDevelopers/trusted_device)
+[![GitHub forks](https://img.shields.io/github/forks/PalestineDevelopers/trusted_device?style=for-the-badge)](https://github.com/PalestineDevelopers/trusted_device)
 
 ---
 
