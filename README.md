@@ -22,6 +22,7 @@ Device security checker, isRooted|isJailbroken, isRealDevice, devModeActive or o
 * [Features](#features)
 * [Getting started](#getting-started)
 * [Usage](#usage)
+* [Contributors](#contributors)
 
 ---
 
@@ -89,3 +90,7 @@ await PalTrustedDevice.check(
       },
     );
 ```
+
+## Contributors
+
+![Contributors](https://contrib.rocks/image?repo=palestinedevelopers/trusted_device)
