@@ -3,6 +3,10 @@
 * Improvements
 * isLocationMocked - Real Time Checker
 
+## 0.1.0
+
+* fixs.
+
 ## 0.0.9 | 0.0.10 | 0.0.11
 
 * docs.
