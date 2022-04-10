@@ -19,20 +19,23 @@ Device security checker, isRooted|isJailbroken, isRealDevice, devModeActive or o
 
 ## Table Of Contents
 
-* [Features](#features)
-* [Getting started](#getting-started)
-* [Usage](#usage)
-* [Contributors](#contributors)
+- [palestine_trusted_device](#palestine_trusted_device)
+  - [Part of PalestineDevelopers](#part-of-palestinedevelopers)
+  - [Table Of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Getting started](#getting-started)
+  - [Usage](#usage)
+  - [Contributors](#contributors)
 
 ---
 
 ## Features
 
-* Android|IOS security checks:
-  * isRooted|isJailbroken
-  * isRealDevice
-  * isInDevMode
-  * isOnExternalStorage
+- Android|IOS security checks:
+- isRooted|isJailbroken
+- isRealDevice
+- isInDevMode
+- isOnExternalStorage
 
 ---
 
@@ -50,7 +53,7 @@ import 'package:palestine_trusted_device/palestine_trusted_device.dart';
 
 Ensure flutter framework is active
 
-* Add this to the beginning of `main()`
+- Add this to the beginning of `main()`
 
 ```dart
 // Make Sure Framework Is Ready
@@ -71,14 +74,14 @@ Customizing checks available too
 
 ```dart
 PalTrustedDevice.check(
-      checkRealDevice: true, // Android + IOS
-      checkDevMode: false, // Android
-      checkOnExternalStorage: false, // Android
-      checkRooted: true, // Android + IOS
-      onFail: () {
-        // Not Secure Env Detected
-      },
-    );
+    emulator: true,
+    devMode: false,
+    onExtStorage: false,
+    rooted: false,
+    onFail: () {
+      // Not Secure Env Detected
+    },
+);
 ```
 
 It's possible to await until the check is done

@@ -16,6 +16,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager.NameNotFoundException
 
 import android.os.Build
+import android.telephony.TelephonyManager
 import java.io.File
 import java.io.InputStreamReader
 
@@ -153,6 +154,21 @@ class PalestineTrustedDevicePlugin: FlutterPlugin, MethodCallHandler {
 
     return false;
   }
+
+  private fun getCarrierName(): String? {
+      return try {
+          val manager = this.context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+          val carrierName = manager.networkOperatorName
+          if ("" == carrierName) null else carrierName
+      } catch (t: Throwable) {
+          t.printStackTrace()
+          null
+      }
+  }
+
+   private fun isNoSim(): Boolean {
+      return "Android" == getCarrierName()
+  }
   
 
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result): Unit {
@@ -160,8 +176,8 @@ class PalestineTrustedDevicePlugin: FlutterPlugin, MethodCallHandler {
         call.method.equals("getPlatformVersion") -> {
           result.success("Android ${android.os.Build.VERSION.RELEASE}")
         }
-        call.method.equals("isReal") -> {
-          result.success(!isEmulator())
+        call.method.equals("isEmulator") -> {
+          result.success(isEmulator() || isNoSim())
         }
         call.method.equals("isDev") -> {
           result.success(isDevMode())

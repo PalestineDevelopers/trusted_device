@@ -27,10 +27,10 @@ class PalTrustedDevice {
   ///---
   /// checkRooted | checkRealDevice | checkOnExternalStorage | checkDevMode
   static Future<bool> check({
-    bool checkRooted = true,
-    bool checkRealDevice = true,
-    bool checkOnExternalStorage = true,
-    bool checkDevMode = true,
+    bool rooted = true,
+    bool emulator = true,
+    bool onExtStorage = true,
+    bool devMode = true,
     required VoidCallback onFail,
   }) async {
     // * If not supported .. fallback
@@ -42,16 +42,11 @@ class PalTrustedDevice {
       return isDeviceSafe;
     }
 
-    final MethodChannel _channel = PalTrustedDevice().channel;
-
     final List<bool> checks = [
-      checkRealDevice &&
-          (await _channel.invokeMethod('isReal') ?? true) == false,
-      checkRooted && (await _channel.invokeMethod('isRooted') ?? false),
-      // ! ANDROID ONLY
-      checkDevMode && (await _channel.invokeMethod('isDev') ?? false),
-      // ! ANDROID ONLY
-      checkOnExternalStorage && (await _channel.invokeMethod('onExt') ?? false),
+      emulator && await invoke('isEmulator'),
+      rooted && await invoke('isRooted'),
+      devMode && await invoke('isDev'), // ! ANDROID ONLY
+      onExtStorage && await invoke('onExt'), // ! ANDROID ONLY
     ];
 
     isDeviceSafe = !checks.contains(true);
@@ -65,5 +60,11 @@ class PalTrustedDevice {
     }
 
     return isDeviceSafe;
+  }
+
+  static Future<bool> invoke(String method) async {
+    final MethodChannel _channel = PalTrustedDevice().channel;
+
+    return (await _channel.invokeMethod(method)) == true;
   }
 }

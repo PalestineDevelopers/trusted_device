@@ -16,10 +16,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     PalTrustedDevice.check(
-      checkRealDevice: true,
-      checkDevMode: false,
-      checkOnExternalStorage: false,
-      checkRooted: true,
+      emulator: true,
+      devMode: false,
+      onExtStorage: false,
+      rooted: false,
       onFail: () {
         // Not Secure Env Detected
       },
