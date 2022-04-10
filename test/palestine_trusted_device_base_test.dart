@@ -8,7 +8,7 @@ void main() {
     TestWidgetsFlutterBinding.ensureInitialized();
 
     Future<bool> handler(MethodCall methodCall) async {
-      if (methodCall.method == 'isReal') {
+      if (methodCall.method == 'isEmulator') {
         return true;
       } else if (methodCall.method == 'isRooted') {
         return false;
